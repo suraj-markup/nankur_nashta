@@ -1,0 +1,78 @@
+.header{
+    box-shadow: 2px 5px 2px 5px #888888;
+    display: flex;
+    justify-content: space-between;
+    border: solid black 1px;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.logo {
+    height: 100px;
+    
+    width: 100px;
+}
+
+.nav-menu > ul{
+    font-size:20px;
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.nav-menu > ul > li{
+   padding: 10px;
+   margin   : 10px;
+   list-style-type: none;
+
+   
+}
+.card-container{
+    padding: 10PX;
+    width: 250px;
+    height: auto;
+    border: .2px solid black;
+    /* box-shadow: 2px 5px 2px 5px #888888; */
+
+}
+.card-container:hover{
+    border: 2px solid black;
+    box-shadow: 2px 5px 2px 5px #888888;
+    cursor: pointer;
+
+}
+.food-photo{
+    width: 240px;
+    height: 200px;
+}
+.food-photo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-res{
+    padding: 0px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.about-res>p{
+   padding: 2px;
+   margin: 0;
+   margin-bottom: 5px;
+  
+}
+.res-order{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+
+}
+h3, h4 {
+    margin-top: 15px; /* Remove margin from the top */
+    margin-bottom: 15px; /* Remove margin from the bottom */
+}
