@@ -1,4 +1,5 @@
-#Parcel
+# Parcel
+
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement
@@ -17,3 +18,24 @@
 - HTTPs Hosting
 - Tree Shaking - remove unused code
 - Different  dev and prod. bundels
+
+# Namaste Foods
+
+/*
+- Header
+  - Logo
+  - Nav Item
+- Body 
+  - Search 
+  - Restaurant card
+    - Img
+    - Restaurant Name
+    - Rating
+    - Distance 
+    - cuisine  
+- Footer
+  - Copyright
+  - Links 
+  - Address
+
+*/
