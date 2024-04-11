@@ -30,8 +30,16 @@
 
    
 }
+
+.res-container{
+    display: flex;
+    flex-wrap:wrap;
+   
+}
+
 .card-container{
     padding: 10PX;
+    margin: 5px 12px;
     width: 250px;
     height: auto;
     border: .2px solid black;
@@ -75,4 +83,26 @@
 h3, h4 {
     margin-top: 15px; /* Remove margin from the top */
     margin-bottom: 15px; /* Remove margin from the bottom */
+}
+.search {
+    display: flex;
+    justify-content: center;
+}
+.filter-btn{
+    margin :10px;
+    margin-top: 20px;
+    width: auto;
+    height: 30;
+}
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.shimmer-card{
+    padding: 10PX;
+    margin: 30px;
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
 }
