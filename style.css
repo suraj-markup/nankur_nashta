@@ -84,15 +84,22 @@ h3, h4 {
     margin-top: 15px; /* Remove margin from the top */
     margin-bottom: 15px; /* Remove margin from the bottom */
 }
-.search {
+.special {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 .filter-btn{
     margin :10px;
     margin-top: 20px;
     width: auto;
     height: 30;
+}
+.search{
+    margin :10px;
+    margin-top: 20px;
+    width: auto;
+    height: 30;
+
 }
 .shimmer-container{
     display: flex;
@@ -106,3 +113,9 @@ h3, h4 {
     height: 400px;
     background-color: #f0f0f0;
 }
+
+.log-in{
+    cursor: pointer ;
+    /* padding: 0px 20px;; */
+}
+
