@@ -39,3 +39,7 @@
   - Address
 
 */
+
+#Menu API
+
+https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.6208&lng=85.1720&restaurantId=646518
