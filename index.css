@@ -1,15 +1,23 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header{
     box-shadow: 2px 5px 2px 5px #888888;
     display: flex;
     justify-content: space-between;
     border: solid black 1px;
-}
+} */
+
+/*
 .logo-container{
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
+
 .logo {
     height: 100px;
     
@@ -43,7 +51,7 @@
     width: 250px;
     height: auto;
     border: .2px solid black;
-    /* box-shadow: 2px 5px 2px 5px #888888; */
+    box-shadow: 2px 5px 2px 5px #888888;
 
 }
 .card-container:hover{
@@ -81,8 +89,8 @@
 
 }
 h3, h4 {
-    margin-top: 15px; /* Remove margin from the top */
-    margin-bottom: 15px; /* Remove margin from the bottom */
+    margin-top: 15px; 
+    margin-bottom: 15px; 
 }
 .special {
     display: flex;
@@ -116,7 +124,7 @@ h3, h4 {
 
 .log-in{
     cursor: pointer ;
-    /* padding: 0px 20px;; */
+    padding: 0px 20px;;
 }
 
 .user-card{
@@ -145,52 +153,51 @@ h3, h4 {
   .block{
     width: 100%;
   }
-  
-  .carousel-item {
-    flex: 0 0 auto;
-    width: 15%;
-    margin-right: 10px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .carousel-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .carousel-item h5 {
-    margin: 10px 0 5px;
-  }
-  
-  .ribbon {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
+    
+    .carousel-item {
+        flex: 0 0 auto;
+        width: 15%;
+        margin-right: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    .carousel-item h5 {
+        margin: 10px 0 5px;
+    }
+    
+    .ribbon {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
 
-  .more-less{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-bottom: 10px; */
-    /* width: 100%; */
-  }
+    .more-less{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+    }
 
-  .switch {
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .switch:hover {
-    background-color: #0056b3;
-  }
+    .switch {
+        padding: 5px 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .switch:hover {
+        background-color: #0056b3;
+    } */

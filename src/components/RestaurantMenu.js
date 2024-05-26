@@ -2,49 +2,24 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState();
-  const [menuCard, setMenuCard] = useState([]);
+  // const [resInfo, setResInfo] = useState(null);
+  // const [menuCard, setMenuCard] = useState([]);
 
   const [showContent, setShowContent] = useState([]);
 
   const { resId } = useParams();
   console.log(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.6208&lng=85.1720&restaurantId=${resId}`
-      );
-
-      const json = await data.json();
-
-      console.log(
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-      );
-
-      const menuCards =
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-
-      setResInfo(json?.data?.cards[2]?.card?.card?.info);
-      setMenuCard(menuCards);
-
-      setShowContent(new Array(menuCards.length).fill(true));
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-    }
-  };
+  const { resInfo, menuCard } = useRestaurantMenu(resId);
 
   const toggleContent = (index) => {
     const updatedShowContent = [...showContent];
     updatedShowContent[index] = !updatedShowContent[index];
     setShowContent(updatedShowContent);
-  };
+  };  
 
   if (!resInfo) {
     return <Shimmer />;
@@ -61,13 +36,13 @@ const RestaurantMenu = () => {
   } = resInfo;
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <h3>
+    <div className="mt-4">
+      <h1 className="font-bold text-center text-xl">{name}</h1>
+      <h3 className="font-bold text-center text-lg">
         ⭐ {avgRating} ({totalRatingsString}) - {costForTwoMessage}
       </h3>
-      <h3>{cuisines.join(",")}</h3>
-      <h3>Menu</h3>
+      <h3 className="font-bold text-center text-lg">{cuisines.join(",")}</h3>
+      {/* <h3 className="font-bold text-2xl">Menu</h3> */}
 
       {menuCard.map((items, index) => {
         const card = items.card.card;
@@ -78,26 +53,26 @@ const RestaurantMenu = () => {
           "type.googleapis.com/swiggy.presentation.food.v2.MenuCarousel"
         ) {
           return (
-            <div className="container" key={index}>
-              <div className="block">
-                <div className="more-less">
-                  <h3>{card.title}</h3>
+            <div className="my-4 mx-auto w-6/12 bg-gray-100 rounded-lg drop-shadow-lg p-4 flex items-center content-center " key={index}>
+              <div className="w-full">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-lg">{card.title} ({card.carousel.length})</h3>
                   <button
-                    className="switch"
+                    className="px-2 py-1 border-none bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-700"
                     onClick={() => toggleContent(index)}
                   >
                     {showContent[index] ? "Show less" : "Show more"}
                   </button>
                 </div>
                 {showContent[index] && (
-                  <div className="carousel">
+                  <div className="flex overflow-x-scroll p-[10px]">
                     {card.carousel.map((carouselItem, idx) => (
-                      <div key={idx} className="carousel-item">
-                        <img
+                      <div key={idx} className="flex-none w-[15%] mr-2 bg-white border border-gray-300 rounded-lg p-2 text-center">
+                        <img className="w-full h-auto rounded-lg"
                           src={CDN_URL + carouselItem.creativeId}
                           alt={carouselItem.title}
                         />
-                        <h5>{carouselItem.title}</h5>
+                        <h5 className="mt-2 mb-1">{carouselItem.title}</h5>
                         <p>{carouselItem.description}</p>
                         <p>
                           Price: ₹
@@ -116,27 +91,42 @@ const RestaurantMenu = () => {
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
         ) {
           return (
-            <div className="container" key={index}>
-              <div className="block">
-                <div className="more-less">
-                  <h3>{card.title}</h3>
+            <div className="my-4 mx-auto w-6/12 bg-gray-100 rounded-lg drop-shadow-lg p-4 flex items-center content-center " key={index}>
+              <div className="w-full">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-lg">{card.title} ({card.itemCards.length})</h3>
                   <button
-                    className="switch"
+                    className="px-2 py-1 border-none bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-700"
                     onClick={() => toggleContent(index)}
                   >
                     {showContent[index] ? "Show less" : "Show more"}
                   </button>
                 </div>
                 {showContent[index] && (
-                <ul>
-                  {card.itemCards.map((itemCard, idx) => (
-                    <li key={idx}>
-                      {itemCard.card.info.name} - ₹
-                      {itemCard.card.info.price / 100 ||
-                        itemCard.card.info.defaultPrice / 100}
-                    </li>
-                  ))}
-                </ul>
+                  <ul>
+                    {card.itemCards.map((itemCard, idx) => (
+                      <li className="my-4 py-4 border-black border-b-2" key={idx}>
+                        <div className="flex justify-between">
+
+                        <div className="w-8/12">
+                        <p className="text-xs font-normal">{itemCard.card.info.isVeg?"🟢":"🔴"}</p>
+                        <p className="text-lg font-medium ">{itemCard.card.info.name}</p> 
+                        <p className="text-lg font-medium my-1">₹{itemCard.card.info.price / 100 || itemCard.card.info.defaultPrice / 100}</p>
+                        <p className="text-xs font-normal my-1">{itemCard.card.info?.ratings?.aggregatedRating?.rating?`⭐${itemCard.card.info?.ratings?.aggregatedRating?.rating}`:"" }</p>
+                        <p className="text-xs font-normal my-2">{itemCard.card.info.description}</p>
+                          
+                        </div>
+                        <div className="relative flex flex-col justify-center items-center">
+                            <img src={CDN_URL + itemCard.card.info.imageId} className="rounded-xl w-[200px] h-[150px]"/>
+                            <button className="absolute inset-y-32   bg-black text-white rounded-md p-2 w-24 h-8 flex justify-center items-center ">
+                              ADD+
+                            </button>
+                          </div>
+                          </div>
+                          {/* <hr></hr> */}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             </div>

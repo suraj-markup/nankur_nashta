@@ -11,7 +11,7 @@ import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 const AppLayout = ()=>{
   
   return (
-    <div className="App">
+    <div className="p-5 bg-orange-50 h-auto">
       <Header/>
       <Outlet/>
     </div>

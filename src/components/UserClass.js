@@ -9,6 +9,7 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
+    
     console.log(props);
     
     this.state={
@@ -25,10 +26,13 @@ class UserClass extends React.Component {
     //API call similar as fucntional component useEffect
     const data= await fetch("https://api.github.com/users/suraj-markup");
     const json= await data.json();
+
     console.log(json);
+
     this.setState({
       userInfo: json,
     });
+
   }
   componentDidUpdate(){
 
