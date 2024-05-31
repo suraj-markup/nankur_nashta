@@ -15,7 +15,7 @@ class UserClass extends React.Component {
     this.state={
       userInfo:{
         name:"Dummy",
-        location:"default",
+        location:"Rajasthan",
       }
     }
     
@@ -47,9 +47,9 @@ class UserClass extends React.Component {
 
     return (
       <div className="user-card">
-        <img src={avatar_url}></img>
+        <img src={avatar_url} className="w-60 rounded-md"></img>
         <h2>Name: {name} </h2>
-        <h2>Location: {location} </h2>
+        <h2>Location: NIT Patna </h2>
         <h2>Contact: @suraj_markup </h2>
       </div>
     );

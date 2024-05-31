@@ -28,7 +28,7 @@ const Body = () => {
 
         const json = await data.json();
 
-        // console.log(json);
+        // console.log(json.info);
         //optional chaining
         setList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setNewList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -44,7 +44,7 @@ const Body = () => {
     <div className="body">
       <div className="flex justify-around items-center">
         <div className="m-2 mt-5 w-auto">
-          <input type =" text"  className="px-4 py-2 bg-blue-100 m-4 rounded-lg border-blue-150 border-2 hover:bg-blue-200" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+          <input type =" text"  data-testid="searchInput" className="px-4 py-2 bg-blue-100 m-4 rounded-lg border-blue-150 border-2 hover:bg-blue-200" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
           
             <button className="px-4 py-2 bg-orange-100 hover:bg-orange-200 m-4 rounded-lg" onClick={()=>{
                 console.log(searchText);

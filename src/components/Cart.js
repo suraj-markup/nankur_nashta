@@ -24,7 +24,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="mt-4 items-center justify-center">
+    <div className="mt-4 items-center justify-center h-auto">
       <h1 className="font-bold text-center text-3xl ">Cart</h1>
       {cartItems.length > 0 ? (
         <div >

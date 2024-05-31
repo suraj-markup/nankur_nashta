@@ -43,6 +43,7 @@ const RestaurantMenu = () => {
     city,
     sla,
     cuisines,
+    isBestseller,
   } = resInfo;
 
   return (
@@ -126,6 +127,7 @@ const RestaurantMenu = () => {
                         <p className="text-lg font-medium ">{itemCard.card.info.name}</p> 
                         <p className="text-lg font-medium my-1">₹{itemCard.card.info.price / 100 || itemCard.card.info.defaultPrice / 100}</p>
                         <p className="text-xs font-normal my-1">{itemCard.card.info?.ratings?.aggregatedRating?.rating?`⭐${itemCard.card.info?.ratings?.aggregatedRating?.rating}`:"" }</p>
+                        <p className="text-xs font-normal my-2">{itemCard.card.info.isBestseller?"BestSeller":""}</p>
                         <p className="text-xs font-normal my-2">{itemCard.card.info.description}</p>
                           
                         </div>
