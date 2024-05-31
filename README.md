@@ -40,6 +40,18 @@
 
 */
 
+# Types of Rendering
+- client side
+- server side
+
+# Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our own store
+- connect our store to our app
+- slice(cartSlice)
+- dispatch (action)
+- selector 
+
 #Menu API
 
 https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.6208&lng=85.1720&restaurantId=646518

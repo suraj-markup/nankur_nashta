@@ -3,6 +3,8 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { addItems } from "../utils/cartSlice";
+import {useDispatch} from "react-redux";
 
 const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
@@ -11,9 +13,17 @@ const RestaurantMenu = () => {
   const [showContent, setShowContent] = useState([]);
 
   const { resId } = useParams();
-  console.log(resId);
+  // console.log(resId);
 
   const { resInfo, menuCard } = useRestaurantMenu(resId);
+  
+  const dispatch =useDispatch();
+  //dispatching the action
+  const handleAddItem=(item)=>{
+    dispatch(addItems(item));
+    
+
+  };
 
   const toggleContent = (index) => {
     const updatedShowContent = [...showContent];
@@ -67,11 +77,14 @@ const RestaurantMenu = () => {
                 {showContent[index] && (
                   <div className="flex overflow-x-scroll p-[10px]">
                     {card.carousel.map((carouselItem, idx) => (
-                      <div key={idx} className="flex-none w-[15%] mr-2 bg-white border border-gray-300 rounded-lg p-2 text-center">
+                      <div key={idx} className="flex-none w-[30%] mr-2 bg-white border border-gray-300 rounded-lg p-2 text-center">
                         <img className="w-full h-auto rounded-lg"
                           src={CDN_URL + carouselItem.creativeId}
                           alt={carouselItem.title}
                         />
+                        <button  onClick={()=>{handleAddItem(carouselItem.dish.info)}} className=" bg-black active:bg-slate-900 text-white rounded-md  w-24 h-8  justify-center items-center ">
+                              ADD+
+                            </button>
                         <h5 className="mt-2 mb-1">{carouselItem.title}</h5>
                         <p>{carouselItem.description}</p>
                         <p>
@@ -118,7 +131,7 @@ const RestaurantMenu = () => {
                         </div>
                         <div className="relative flex flex-col justify-center items-center">
                             <img src={CDN_URL + itemCard.card.info.imageId} className="rounded-xl w-[200px] h-[150px]"/>
-                            <button className="absolute inset-y-32   bg-black text-white rounded-md p-2 w-24 h-8 flex justify-center items-center ">
+                            <button  onClick={()=>{handleAddItem(itemCard.card.info)}} className="absolute inset-y-32   active:bg-slate-900 bg-black text-white rounded-md p-2 w-24 h-8 flex justify-center items-center ">
                               ADD+
                             </button>
                           </div>
