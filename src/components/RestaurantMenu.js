@@ -95,7 +95,7 @@ const RestaurantMenu = () => {
                         </p>
                       </div>
                     ))}
-                  </div>
+                  </div> 
                 )}
               </div>
             </div>
