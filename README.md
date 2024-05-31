@@ -1,3 +1,9 @@
+# Nankur Nashta
+- This project is made while learning the concepts of React.js so that along with theory I can get my hands on with actual project.
+- This whole project works on the data that is coming from real time API that Swiggy uses on it's website.
+- As currently I'm @NIT Patna, so I have used location of Patna. But in coming days I will add feature to search your area and city.
+
+
 # Parcel
 
 - Dev Build
