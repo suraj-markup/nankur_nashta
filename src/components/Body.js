@@ -1,4 +1,7 @@
   import RestaurantCard, {withPromotedLabel} from "./ResCard";
+  // import API from
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
   import axios from "axios";
   import Shimmer from "./Shimmer";
   import { useState,useEffect } from "react";
@@ -11,7 +14,7 @@
 
     const handleGeocode = async () => {
         try {
-            const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDs7aOnJ_NLUgzXRZspzdB5fbPUw-k1An0`);
+            const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.API}`);
             const data = response.data;
             if (data.results.length > 0) {
                 const { lat, lng } = data.results[0].geometry.location;
@@ -45,6 +48,7 @@
       
       useEffect(() => {
         fetchData();
+        AOS.init();
       },[]);
 
       const fetchData = async (latitude = lat, longitude = lng) =>{
@@ -70,7 +74,7 @@
       ) :(  
       <div className="body">
         <div className="flex justify-around items-center">
-          <div className="m-2 mt-5 w-auto">
+          <div  data-aos="fade-up" className="m-2 mt-5 w-auto">
             <input type =" text"  data-testid="searchInput" className="px-4 py-2 bg-blue-100 m-4 rounded-lg border-blue-150 border-2 hover:bg-blue-200" value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
             
               <button className="px-4 py-2 bg-orange-100 hover:bg-orange-200 m-4 rounded-lg" onClick={()=>{
@@ -82,7 +86,7 @@
               </button>
               
           </div>
-          <div >
+          <div data-aos="fade-up" >
               <input
                 className="px-4 py-2 bg-blue-100 m-4 rounded-lg border-blue-150 border-2 hover:bg-blue-200"
                   type="text"
@@ -100,7 +104,7 @@
               )} */}
           </div>
 
-          <button
+          <button data-aos="fade-up"
             className="px-4 py-2 bg-gray-200 hover:bg-gray-300 m-4 rounded-lg"
             onClick={() => {
               let filteredData = newList.filter((res) => res.info.avgRating > 4);
@@ -112,7 +116,7 @@
           </button>
         </div>
 
-        <div className="flex flex-wrap ">
+        <div data-aos="fade-up" className="flex flex-wrap ">
           {newList.map((restaurant) => (
             <Link key={restaurant.info.id} to={`/restaurants/${restaurant.info.id}`}> 
             {restaurant.info.promoted ? <promotedCard  resData={restaurant}/> :<RestaurantCard  resData={restaurant} />
