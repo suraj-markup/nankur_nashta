@@ -3,17 +3,15 @@ import { useSelector } from "react-redux";
 import { CDN_URL } from "../utils/constant";
 import { clearCart } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import GooglePayButton from "@google-pay/button-react";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(cartItems);
-
+  // console.log(cartItems);
   const dispatch = useDispatch();
 
   const handleClick=() =>{
-
     dispatch(clearCart() );
-
 
   }
  
@@ -76,6 +74,7 @@ const Cart = () => {
         ))}
         <div className="text-center mt-6">
             <p className="text-2xl font-bold">Total Amount: ₹{calculateTotalAmount()}</p>
+            <GooglePayButton environment="TEST"></GooglePayButton>
             <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition duration-300">
               Go to Payment
             </button>
